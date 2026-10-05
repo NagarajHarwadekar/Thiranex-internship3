@@ -1,0 +1,1122 @@
+/* =========================================================
+   TASKFLOW
+   Modern Responsive Task Manager
+   ========================================================= */
+
+
+/* ================= ROOT ================= */
+
+:root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --surface-soft: #f8f9fc;
+
+    --text: #151823;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+
+    --border: #e8eaf0;
+
+    --primary: #5b5ce2;
+    --primary-dark: #4647c9;
+    --primary-soft: #eef0ff;
+
+    --success: #16a36a;
+    --success-soft: #e9f8f1;
+
+    --danger: #e04f5f;
+    --danger-soft: #fff0f2;
+
+    --shadow-sm:
+        0 2px 10px rgba(20, 25, 45, 0.05);
+
+    --shadow-md:
+        0 15px 40px rgba(20, 25, 45, 0.08);
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+}
+
+
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
+    line-height: 1.5;
+}
+
+
+button,
+input {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+/* ================= APP SHELL ================= */
+
+.app-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+
+/* ================= HEADER ================= */
+
+.header {
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+
+.brand-icon {
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 23px;
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 20px rgba(91, 92, 226, 0.25);
+}
+
+
+.brand h1 {
+    font-size: 20px;
+    letter-spacing: -0.4px;
+}
+
+
+.brand p {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+
+.header-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+
+    box-shadow:
+        0 0 0 4px var(--success-soft);
+}
+
+
+/* ================= MAIN ================= */
+
+.main-content {
+    padding: 48px 0 70px;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    margin-bottom: 32px;
+}
+
+
+.eyebrow,
+.section-label {
+    display: block;
+
+    color: var(--primary);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.hero h2 {
+    max-width: 650px;
+
+    margin-top: 8px;
+
+    font-size: clamp(36px, 6vw, 58px);
+
+    line-height: 1.03;
+
+    letter-spacing: -2.5px;
+}
+
+
+.hero h2 span {
+    color: var(--primary);
+}
+
+
+.hero p {
+    max-width: 580px;
+
+    margin-top: 16px;
+
+    color: var(--text-secondary);
+
+    font-size: 16px;
+}
+
+
+/* ================= STATISTICS ================= */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 28px;
+}
+
+
+.stat-card {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 20px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+
+.stat-icon {
+    width: 46px;
+    height: 46px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.total-icon {
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+
+.active-icon {
+    background: #fff7df;
+    color: #c58a00;
+}
+
+
+.completed-icon {
+    background: var(--success-soft);
+    color: var(--success);
+}
+
+
+.stat-card p {
+    color: var(--text-secondary);
+
+    font-size: 13px;
+}
+
+
+.stat-card h3 {
+    margin-top: 2px;
+
+    font-size: 25px;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.task-input-section,
+.tasks-section {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+}
+
+
+.task-input-section {
+    padding: 28px;
+
+    margin-bottom: 22px;
+}
+
+
+.section-heading h2,
+.tasks-header h2 {
+    margin-top: 3px;
+
+    font-size: 21px;
+
+    letter-spacing: -0.6px;
+}
+
+
+/* ================= TASK FORM ================= */
+
+.task-form {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+
+.input-wrapper {
+    position: relative;
+
+    flex: 1;
+}
+
+
+.input-icon {
+    position: absolute;
+
+    left: 17px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--primary);
+
+    font-size: 22px;
+
+    pointer-events: none;
+}
+
+
+.input-wrapper input {
+    width: 100%;
+
+    height: 54px;
+
+    padding:
+        0 18px 0 48px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 13px;
+
+    outline: none;
+
+    color: var(--text);
+
+    background: var(--surface-soft);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.input-wrapper input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px var(--primary-soft);
+
+    background: white;
+}
+
+
+.add-button {
+    min-width: 135px;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.add-button:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-1px);
+}
+
+
+.add-button span {
+    margin-right: 4px;
+
+    font-size: 18px;
+}
+
+
+.form-message {
+    min-height: 20px;
+
+    margin-top: 8px;
+
+    color: var(--danger);
+
+    font-size: 12px;
+}
+
+
+/* ================= TASK SECTION ================= */
+
+.tasks-section {
+    padding: 28px;
+}
+
+
+.tasks-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.clear-button {
+    padding: 8px 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+
+    transition: all 0.2s ease;
+}
+
+
+.clear-button:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+    background: var(--danger-soft);
+}
+
+
+/* ================= FILTERS ================= */
+
+.filters {
+    display: flex;
+
+    gap: 7px;
+
+    padding: 5px;
+
+    width: fit-content;
+
+    margin-top: 22px;
+    margin-bottom: 20px;
+
+    background: var(--surface-soft);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+}
+
+
+.filter-button {
+    padding: 8px 16px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+
+.filter-button:hover {
+    color: var(--text);
+}
+
+
+.filter-button.active {
+    background: white;
+
+    color: var(--primary);
+
+    box-shadow: var(--shadow-sm);
+}
+
+
+/* ================= TASK LIST ================= */
+
+.task-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.task-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 15px 16px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: white;
+
+    animation: taskAppear 0.25s ease;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.task-item:hover {
+    border-color: #d9dbf7;
+
+    box-shadow: var(--shadow-sm);
+
+    transform: translateY(-1px);
+}
+
+
+@keyframes taskAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ================= CHECKBOX ================= */
+
+.task-checkbox {
+    position: relative;
+
+    flex-shrink: 0;
+
+    width: 21px;
+    height: 21px;
+
+    appearance: none;
+
+    border: 2px solid #c9ccd6;
+
+    border-radius: 7px;
+
+    background: white;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.task-checkbox:hover {
+    border-color: var(--primary);
+}
+
+
+.task-checkbox:checked {
+    border-color: var(--success);
+
+    background: var(--success);
+}
+
+
+.task-checkbox:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -55%);
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* ================= TASK CONTENT ================= */
+
+.task-content {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.task-title {
+    color: var(--text);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    overflow-wrap: anywhere;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.task-item.completed .task-title {
+    color: var(--text-light);
+
+    text-decoration:
+        line-through;
+}
+
+
+.task-date {
+    margin-top: 2px;
+
+    color: var(--text-light);
+
+    font-size: 11px;
+}
+
+
+/* ================= TASK ACTIONS ================= */
+
+.task-item-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.icon-button {
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid transparent;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    font-size: 16px;
+
+    transition: all 0.2s ease;
+}
+
+
+.icon-button:hover {
+    background: var(--primary-soft);
+
+    color: var(--primary);
+}
+
+
+.delete-button:hover {
+    background: var(--danger-soft);
+
+    color: var(--danger);
+}
+
+
+/* ================= EMPTY STATE ================= */
+
+.empty-state {
+    padding: 55px 20px;
+
+    text-align: center;
+
+    border:
+        1px dashed #d9dce7;
+
+    border-radius: 15px;
+
+    background: var(--surface-soft);
+}
+
+
+.empty-icon {
+    width: 54px;
+    height: 54px;
+
+    display: grid;
+    place-items: center;
+
+    margin: 0 auto 14px;
+
+    border-radius: 50%;
+
+    background: var(--primary-soft);
+
+    color: var(--primary);
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+
+.empty-state h3 {
+    font-size: 17px;
+}
+
+
+.empty-state p {
+    max-width: 400px;
+
+    margin: 5px auto 0;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        25px 0 35px;
+
+    color: var(--text-light);
+
+    font-size: 11px;
+}
+
+
+/* ================= MODAL ================= */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: grid;
+    place-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(15, 18, 30, 0.45);
+
+    backdrop-filter:
+        blur(5px);
+}
+
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+
+.modal {
+    width: min(480px, 100%);
+
+    padding: 27px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.18);
+
+    animation: modalIn 0.2s ease;
+}
+
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+.modal-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 22px;
+}
+
+
+.modal-header h2 {
+    margin-top: 3px;
+
+    font-size: 21px;
+}
+
+
+.close-modal {
+    width: 35px;
+    height: 35px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: var(--surface-soft);
+
+    color: var(--text-secondary);
+
+    font-size: 23px;
+}
+
+
+.close-modal:hover {
+    background: var(--danger-soft);
+
+    color: var(--danger);
+}
+
+
+.modal label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.modal input {
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 14px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    color: var(--text);
+}
+
+
+.modal input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px var(--primary-soft);
+}
+
+
+.modal-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+
+    margin-top: 18px;
+}
+
+
+.cancel-button,
+.save-button {
+    padding: 10px 15px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.cancel-button {
+    border: 1px solid var(--border);
+
+    background: white;
+
+    color: var(--text-secondary);
+}
+
+
+.save-button {
+    border: 0;
+
+    background: var(--primary);
+
+    color: white;
+}
+
+
+.save-button:hover {
+    background: var(--primary-dark);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 760px) {
+
+    .app-shell {
+        width: min(100% - 24px, 600px);
+    }
+
+
+    .header {
+        min-height: 75px;
+    }
+
+
+    .header-status {
+        display: none;
+    }
+
+
+    .main-content {
+        padding-top: 35px;
+    }
+
+
+    .hero h2 {
+        font-size: 40px;
+
+        letter-spacing: -1.8px;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .task-input-section,
+    .tasks-section {
+        padding: 20px;
+    }
+
+
+    .task-form {
+        flex-direction: column;
+    }
+
+
+    .add-button {
+        height: 52px;
+    }
+
+
+    .tasks-header {
+        flex-direction: column;
+    }
+
+
+    .clear-button {
+        width: 100%;
+    }
+
+
+    .filters {
+        width: 100%;
+    }
+
+
+    .filter-button {
+        flex: 1;
+    }
+
+
+    .task-item {
+        align-items: flex-start;
+    }
+
+
+    .task-item-actions {
+        align-self: center;
+    }
+
+
+    .footer {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 5px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .hero h2 {
+        font-size: 34px;
+    }
+
+
+    .hero p {
+        font-size: 14px;
+    }
+
+
+    .brand p {
+        display: none;
+    }
+
+
+    .task-title {
+        font-size: 13px;
+    }
+
+
+    .icon-button {
+        width: 31px;
+        height: 31px;
+    }
+
+}

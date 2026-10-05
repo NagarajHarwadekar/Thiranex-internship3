@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="TaskFlow - A modern JavaScript task management application with local storage.">
+
+    <title>TaskFlow | Smart Task Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- ================= HEADER ================= -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">✓</div>
+
+                <div>
+                    <h1>TaskFlow</h1>
+                    <p>Organize your day. Get things done.</p>
+                </div>
+            </div>
+
+            <div class="header-status">
+                <span class="status-dot"></span>
+                <span>Local & Private</span>
+            </div>
+        </header>
+
+
+        <!-- ================= MAIN ================= -->
+        <main class="main-content">
+
+            <!-- Hero -->
+            <section class="hero">
+                <div>
+                    <span class="eyebrow">YOUR PRODUCTIVITY SPACE</span>
+
+                    <h2>
+                        Turn your plans into
+                        <span>progress.</span>
+                    </h2>
+
+                    <p>
+                        Create, manage and track your tasks with a simple
+                        productivity dashboard.
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- ================= STATISTICS ================= -->
+            <section class="stats-grid">
+
+                <article class="stat-card">
+                    <div class="stat-icon total-icon">☰</div>
+
+                    <div>
+                        <p>Total Tasks</p>
+                        <h3 id="totalTasks">0</h3>
+                    </div>
+                </article>
+
+
+                <article class="stat-card">
+                    <div class="stat-icon active-icon">◷</div>
+
+                    <div>
+                        <p>Active</p>
+                        <h3 id="activeTasks">0</h3>
+                    </div>
+                </article>
+
+
+                <article class="stat-card">
+                    <div class="stat-icon completed-icon">✓</div>
+
+                    <div>
+                        <p>Completed</p>
+                        <h3 id="completedTasks">0</h3>
+                    </div>
+                </article>
+
+            </section>
+
+
+            <!-- ================= ADD TASK ================= -->
+            <section class="task-input-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-label">NEW TASK</span>
+                        <h2>What needs to be done?</h2>
+                    </div>
+                </div>
+
+                <form id="taskForm" class="task-form">
+
+                    <div class="input-wrapper">
+                        <span class="input-icon">＋</span>
+
+                        <input
+                            type="text"
+                            id="taskInput"
+                            placeholder="e.g. Complete JavaScript assignment..."
+                            maxlength="150"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <button type="submit" class="add-button">
+                        <span>+</span>
+                        Add Task
+                    </button>
+
+                </form>
+
+                <p id="formMessage" class="form-message"></p>
+
+            </section>
+
+
+            <!-- ================= TASK LIST ================= -->
+            <section class="tasks-section">
+
+                <div class="tasks-header">
+
+                    <div>
+                        <span class="section-label">TASKS</span>
+                        <h2>Your task list</h2>
+                    </div>
+
+
+                    <div class="task-actions">
+
+                        <button
+                            class="clear-button"
+                            id="clearCompleted"
+                            type="button"
+                        >
+                            Clear completed
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Filters -->
+                <div class="filters" role="tablist">
+
+                    <button
+                        class="filter-button active"
+                        data-filter="all"
+                        type="button"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="active"
+                        type="button"
+                    >
+                        Active
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="completed"
+                        type="button"
+                    >
+                        Completed
+                    </button>
+
+                </div>
+
+
+                <!-- Dynamic tasks are inserted here -->
+                <div id="taskList" class="task-list"></div>
+
+
+                <!-- Empty state -->
+                <div id="emptyState" class="empty-state">
+
+                    <div class="empty-icon">✓</div>
+
+                    <h3 id="emptyTitle">No tasks yet</h3>
+
+                    <p id="emptyText">
+                        Add your first task above and start making progress.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- ================= FOOTER ================= -->
+        <footer class="footer">
+
+            <p>
+                TaskFlow • Built with HTML, CSS & JavaScript
+            </p>
+
+            <p>
+                Data is stored locally in your browser.
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <!-- Edit Task Modal -->
+    <div
+        id="editModal"
+        class="modal-overlay hidden"
+        aria-hidden="true"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+                <div>
+                    <span class="section-label">EDIT TASK</span>
+                    <h2>Update your task</h2>
+                </div>
+
+                <button
+                    id="closeModal"
+                    class="close-modal"
+                    type="button"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+            </div>
+
+
+            <form id="editForm">
+
+                <label for="editInput">
+                    Task name
+                </label>
+
+                <input
+                    type="text"
+                    id="editInput"
+                    maxlength="150"
+                    autocomplete="off"
+                >
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancelEdit"
+                        class="cancel-button"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
